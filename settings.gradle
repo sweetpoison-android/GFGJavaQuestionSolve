@@ -1,0 +1,3 @@
+include ':GFGJavaQuestion'
+include ':app'
+rootProject.name = "GFGJavaQuestionSolve"
