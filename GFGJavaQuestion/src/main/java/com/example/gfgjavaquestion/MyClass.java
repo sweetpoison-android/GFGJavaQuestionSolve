@@ -4,17 +4,14 @@ public class MyClass {
 
     public static void main(String[] args)
     {
-     swapNumberByThirdVariable(1, 5);
+        swapTwoNumber(5, 1);
     }
 
-   public static void swapNumberByThirdVariable(int a, int b)
+   public static void swapTwoNumber(int a, int b)
     {
-        int thirdNumber =0;
-        thirdNumber = a;
-
-        a=b;
-
-        b= thirdNumber;
+        a = a+b;
+        b = a-b;
+        a = a-b;
 
         System.out.println("a : "+a);
         System.out.println("b : "+b);
