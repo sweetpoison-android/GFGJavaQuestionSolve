@@ -4,25 +4,39 @@ public class MyClass {
 
     public static void main(String[] args)
     {
-       int largest = findLargestNumberInThreeNumber(12, 754, 98);
-        System.out.println( largest);
+        findPrimeNumberFromGivenRange(1, 100);
+
     }
 
-   public static int findLargestNumberInThreeNumber(int a, int b, int c)
+   public static void findPrimeNumberFromGivenRange(int a, int b)
     {
-      if (a>b && a>c)
-      {
-          return a;
-      }
-      else if (b>a && b>c)
+        int isDivided, count = 0;
 
-      {
-          return b;
-      }
-      else
-      {
-          return c;
-      }
+        for (int i=a; i<=b ; i++)
+        {
+            if (i == 0 || i==1)
+                continue;
 
+            isDivided = 1;
+            for (int j=2; j<=i/2; j++)
+            {
+                if (i%j == 0)
+                {
+                    isDivided = 0;
+                    break;
+                }
+
+            }
+
+            if (isDivided == 1)
+            {
+                System.out.println(i);
+               count++;
+
+            }
+
+        }
+        System.out.printf("Total prime number"+count);
+        }
     }
-}
+
