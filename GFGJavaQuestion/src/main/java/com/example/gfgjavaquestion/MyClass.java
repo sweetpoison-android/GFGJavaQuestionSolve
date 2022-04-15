@@ -4,17 +4,25 @@ public class MyClass {
 
     public static void main(String[] args)
     {
-        swapTwoNumber(5, 1);
+       int largest = findLargestNumberInThreeNumber(12, 754, 98);
+        System.out.println( largest);
     }
 
-   public static void swapTwoNumber(int a, int b)
+   public static int findLargestNumberInThreeNumber(int a, int b, int c)
     {
-        a = a+b;
-        b = a-b;
-        a = a-b;
+      if (a>b && a>c)
+      {
+          return a;
+      }
+      else if (b>a && b>c)
 
-        System.out.println("a : "+a);
-        System.out.println("b : "+b);
+      {
+          return b;
+      }
+      else
+      {
+          return c;
+      }
 
     }
 }
