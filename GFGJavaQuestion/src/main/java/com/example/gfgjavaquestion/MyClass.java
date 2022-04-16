@@ -4,30 +4,29 @@ public class MyClass {
 
     public static void main(String[] args) {
 
-        findNeonNumberBetweenRange(1, 10000);
+        findFibonacciNumber(10);
         System.out.println();
 
     }
 
-    public static void findNeonNumberBetweenRange(int a, int b) {
+    public static void findFibonacciNumber(int n) {
 
+        int firstNumber = 0;
+        int secondNumber = 1;
         int sum = 0;
-        int square = 0;
+        System.out.println( firstNumber);
+        System.out.println( secondNumber);
 
-        for (int i = a; i <= b; i++) {
-                  square = i*i;
-            while (square > 0) {
-                int result = square % 10;
-                sum += result;
-                square = square / 10;
-            }
+        for(int i=2; i<=n; i++)
+        {
+          sum = firstNumber+secondNumber;
 
-            if (sum == i) {
-                System.out.println(i+"");
-            } else {
-                System.out.println("not found");
-            }
+            System.out.println(sum);
+
+          firstNumber = secondNumber;
+          secondNumber = sum;
 
         }
+
     }
 }
