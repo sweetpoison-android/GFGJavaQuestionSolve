@@ -4,32 +4,30 @@ public class MyClass {
 
     public static void main(String[] args) {
 
-        checkNeonNumber(9);
+        findNeonNumberBetweenRange(1, 10000);
         System.out.println();
 
     }
 
-    public static void checkNeonNumber(int a) {
+    public static void findNeonNumberBetweenRange(int a, int b) {
 
-        int sum=0;
-        int square =0;
-        square = a*a;
+        int sum = 0;
+        int square = 0;
 
-        while (square>0)
-        {
-            int result = square%10;
-            sum +=result;
-            square = square/10;
+        for (int i = a; i <= b; i++) {
+                  square = i*i;
+            while (square > 0) {
+                int result = square % 10;
+                sum += result;
+                square = square / 10;
+            }
+
+            if (sum == i) {
+                System.out.println(i+"");
+            } else {
+                System.out.println("not found");
+            }
+
         }
-
-        if (sum == a)
-        {
-            System.out.println("number is neon");
-        }
-        else
-        {
-            System.out.println("number is not neon");
-        }
-
     }
 }
