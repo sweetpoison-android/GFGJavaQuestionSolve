@@ -4,29 +4,16 @@ public class MyClass {
 
     public static void main(String[] args) {
 
-        findFibonacciNumber(10);
-        System.out.println();
+       double SI = findCompoundInterest(5765, 5, 2);
+        System.out.println("Simple interest : "+SI);
 
     }
 
-    public static void findFibonacciNumber(int n) {
+    public static double findCompoundInterest(double p, double r, double t) {
 
-        int firstNumber = 0;
-        int secondNumber = 1;
-        int sum = 0;
-        System.out.println( firstNumber);
-        System.out.println( secondNumber);
+      double compoundInterest = p*(Math.pow((1+r/100), t));
 
-        for(int i=2; i<=n; i++)
-        {
-          sum = firstNumber+secondNumber;
-
-            System.out.println(sum);
-
-          firstNumber = secondNumber;
-          secondNumber = sum;
-
-        }
+       return compoundInterest;
 
     }
 }
