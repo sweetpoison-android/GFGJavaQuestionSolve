@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="GFGJavaQuestionSolve.app" target="11" />
+      <module name="GFGJavaQuestionSolve.practiceforsdk" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
