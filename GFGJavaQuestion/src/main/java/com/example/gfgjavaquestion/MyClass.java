@@ -11,7 +11,7 @@ public class MyClass {
     public static void mirrorUpperStarTrianglePattern(int number) {
 
    upperPartOfPyramidTriangle(5);
-   lowerPartOfPyramidTriangle(3);
+   lowerPartOfPyramidTriangle(5);
 
     }
 
