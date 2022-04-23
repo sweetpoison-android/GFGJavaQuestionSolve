@@ -1,10 +1,12 @@
 package com.example.gfgjavaquestion;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -12,34 +14,22 @@ public class MyClass {
 
     public static void main(String[] args) {
 
-      Integer[] array = new Integer[]{54, 98, 23, 56, 38, 23, 19, 50, 32, 54, 23, 98};
+        Scanner scanner = new Scanner(System.in);
 
-        Arrays.sort(array, Collections.<Integer>reverseOrder());  // for ascending order sorting
-        System.out.println("sorting an array : "+Arrays.toString(array));
+        String word = "";
+        String reverseWord = "";
+        char ch;
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
-       Collections.addAll(arrayList, array);
+        System.out.println("Enter anything");
 
-        HashSet<Integer> hashSet = new HashSet<Integer>(arrayList);
+           word = scanner.nextLine();
 
-        System.out.println("remove duplicate : "+hashSet);
-
-        TreeSet<Integer> treeSet = new TreeSet<Integer>(hashSet);
-
-        System.out.println("sorting arraylist after removed duplicate "+treeSet);
-
-        int i=0;
-
-        int[] arr = new int[treeSet.size()];
-        for ( int ese : treeSet)
+        for (int i=0; i<word.length(); i++)
         {
-            arr[i++] = ese;
-
+            ch = word.charAt(i);
+            reverseWord = ch+reverseWord;
         }
-        System.out.println("Second highest value of array : "+arr[arr.length-2]);
 
+        System.out.println(reverseWord+" : it is reversed");
     }
-
-
-
-}
+    }
