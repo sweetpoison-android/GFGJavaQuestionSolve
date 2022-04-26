@@ -1,35 +1,65 @@
 package com.example.gfgjavaquestion;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class MyClass {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        TreeSet treeSet = new TreeSet(new MyComparator());
+        treeSet.add(new Book("Java", 1000));
+        treeSet.add(new Book("Python", 700));
+        treeSet.add(new Book("Kotlin", 500));
+        treeSet.add(new Book("Ruby", 900));
+        treeSet.add(new Book("c++", 300));
+        treeSet.add(new Book(".net", 1500));
 
-        String word = "";
-        String reverseWord = "";
-        char ch;
-
-        System.out.println("Enter anything");
-
-           word = scanner.nextLine();
-
-        for (int i=0; i<word.length(); i++)
+        Iterator iterator = treeSet.iterator();
+        while (iterator.hasNext())
         {
-            ch = word.charAt(i);
-            reverseWord = ch+reverseWord;
+            Book b = (Book) iterator.next();
+            System.out.println(b.getTitle() + " \t " + b.getPrice());
         }
 
-        System.out.println(reverseWord+" : it is reversed");
+
     }
+
+
+ }
+class Book
+{
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+class MyComparator implements Comparator {
+
+    @Override
+    public int compare(Object o, Object t1) {
+        Book b1, b2;
+
+        b1 = (Book) o;
+        b2 = (Book) t1;
+
+        if (b1.getPrice() < b2.getPrice()) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+}
