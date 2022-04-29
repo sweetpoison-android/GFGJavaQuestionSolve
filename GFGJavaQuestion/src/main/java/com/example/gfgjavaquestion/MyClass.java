@@ -1,33 +1,46 @@
 package com.example.gfgjavaquestion;
 
+import java.util.Scanner;
+
 public class MyClass {
 
     public static void main(String[] args) {
 
-      int ans[] =  returnMultipleValue(100, 16);
-        System.out.println("Addition : " +ans[0]);
-        System.out.println("Subtraction : " +ans[1]);
-        System.out.println("Multiplication : " +ans[2]);
-        System.out.println("Division : " +ans[3]);
-        System.out.println("Remainder : " +ans[4]);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter first number");
+        int a = sc.nextInt();
+        System.out.println("Enter second number");
+        int b = sc.nextInt();
 
-
+        GetResult ans = GetResult.getAns(a, b);
+        System.out.println("Addition : "+ ans.sum);
+        System.out.println("Subtraction : "+ ans.sub);
+        System.out.println("Multiplication : "+ ans.mul);
+        System.out.println("Division : "+ ans.div);
+        System.out.println("Remainder : "+ ans.remain);
 
     }
 
-   static int[] returnMultipleValue(int a, int b)
-   {
-      int result[] = new int[5];
-      result[0] = a+b;
-      result[1] = a-b;
-      result[2] = a*b;
-      result[3] = a/b;
-      result[4] = a%b;
-
-      return result;
-   }
-
  }
+
+  class GetResult
+  {
+      int sum,sub,mul,div,remain;
+
+      GetResult(int addition, int subtraction,int multiply, int divide, int remainder)
+      {
+          this.sum = addition;
+          this.sub = subtraction;
+          this.mul = multiply;
+          this.div = divide;
+          this.remain = remainder;
+      }
+
+      public static GetResult getAns(int a, int b)
+      {
+          return new GetResult(a+b, a-b, a*b, a/b, a%b);
+      }
+  }
 
 
 
