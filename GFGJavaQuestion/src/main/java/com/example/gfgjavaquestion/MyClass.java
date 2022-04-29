@@ -1,65 +1,50 @@
 package com.example.gfgjavaquestion;
 
+import java.awt.print.Book;
 import java.util.Comparator;
+import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeSet;
+import java.util.function.BiConsumer;
 
 public class MyClass {
 
+
+
     public static void main(String[] args) {
 
-        TreeSet treeSet = new TreeSet(new MyComparator());
-        treeSet.add(new Book("Java", 1000));
-        treeSet.add(new Book("Python", 700));
-        treeSet.add(new Book("Kotlin", 500));
-        treeSet.add(new Book("Ruby", 900));
-        treeSet.add(new Book("c++", 300));
-        treeSet.add(new Book(".net", 1500));
+        int arr[] = { 32, 65, 2, 6, 89, 67, 45, 54, 78, 34, 53, 12, 76, 49};
 
-        Iterator iterator = treeSet.iterator();
-        while (iterator.hasNext())
+        Scanner sc = new Scanner(System.in);
+
+        int index = linearSearch(arr, arr.length, 27);
+        if (index == -1)
         {
-            Book b = (Book) iterator.next();
-            System.out.println(b.getTitle() + " \t " + b.getPrice());
+            System.out.println("number not found");
+        }
+        else
+        {
+            System.out.println("number found at position : " + index);
         }
 
 
     }
 
+    public static int linearSearch(int arr[], int length, int searchNumber)
+    {
+        for (int i=0; i<length; i++)
+        {
+           if (arr[i] == searchNumber)
+           {
+               return i;
+           }
+        }
+        return -1;
+    }
 
  }
-class Book
-{
-    private String title;
-    private double price;
 
-    public Book(String title, double price) {
-        this.title = title;
-        this.price = price;
-    }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public double getPrice() {
-        return price;
-    }
-}
-
-class MyComparator implements Comparator {
-
-    @Override
-    public int compare(Object o, Object t1) {
-        Book b1, b2;
-
-        b1 = (Book) o;
-        b2 = (Book) t1;
-
-        if (b1.getPrice() < b2.getPrice()) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
-}
