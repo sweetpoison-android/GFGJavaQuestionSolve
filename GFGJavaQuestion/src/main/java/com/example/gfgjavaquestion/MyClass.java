@@ -1,44 +1,56 @@
 package com.example.gfgjavaquestion;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class MyClass {
 
     /* Driver program to test above function */
     public static void main(String args[]) {
 
-        int arr[] = {100,33,88, 56, 44, 90, 110, 33, 22, 66};
-        printArray(arr, arr.length);
-        System.out.println("");
-        reverseArray(arr, 0, arr.length-1);
-        printArray(arr, arr.length);
+        int[] number = {34, 78, 56, 68, 24, 9, 60, 45, 34, 67, 23};
+
+        Arrays.sort(number);
+        System.out.println(Arrays.toString(number));
+
+        Pair minMax = new Pair();
+        minMax = minMax.getMinMax(number, number.length);
+        System.out.println("Max no : " + minMax.max + "\nMin No : " + minMax.min);
 
     }
 
-    public static void reverseArray(int arr[], int start, int end)
-    {
-        int temp;
-        while (start < end)
-        {
-           temp = arr[start];
-           arr[start] = arr[end];
-           arr[end] = temp;
-           start++;
-           end--;
+}
+
+class Pair {
+    int min;
+    int max;
+
+    public Pair getMinMax(int[] arr, int length) {
+        Pair minMax = new Pair();
+
+        if (length == 1) {
+            minMax.max = arr[0];
+            minMax.min = arr[0];
+            return minMax;
         }
-    }
-    public static void printArray(int arr[], int length)
-    {
-        for (int i =0; i<length; i++)
-        {
-            System.out.print(arr[i] + " ");
+        if (arr[0] > arr[1]) {
+            minMax.max = arr[0];
+            minMax.min = arr[1];
+        } else {
+            minMax.max = arr[1];
+            minMax.min = arr[0];
         }
-    }
 
- }
+        for (int i = 2; i < length; i++) {
+            if (arr[i] > minMax.max) {
+                minMax.max = arr[i];
+            } else if (arr[i] < minMax.min) {
+                minMax.min = arr[i];
+            }
+        }
+
+        return minMax;
+    }
+}
 
 
 
