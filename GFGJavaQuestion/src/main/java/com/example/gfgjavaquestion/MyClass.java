@@ -1,57 +1,50 @@
 package com.example.gfgjavaquestion;
 
-import java.util.Arrays;
-
 public class MyClass {
 
-    /* Driver program to test above function */
-    public static void main(String args[]) {
+    public static void main(String[] args)  {
 
-        int[] number = {34, 78, 56, 68, 24, 9, 60, 45, 34, 67, 23};
-
-        Arrays.sort(number);
-        System.out.println(Arrays.toString(number));
-
-        Pair minMax = new Pair();
-        minMax = minMax.getMinMax(number, number.length);
-        System.out.println("Max no : " + minMax.max + "\nMin No : " + minMax.min);
+        Sender sender = new Sender();
+        MessagingSendThread thread1 = new MessagingSendThread("Hi", sender);
+        thread1.start();
+        MessagingSendThread thread2 = new MessagingSendThread("Bye", sender);
+        thread2.start();
 
     }
 
 }
 
-class Pair {
-    int min;
-    int max;
+class Sender
+{
+    public void sendMessage(String message) throws InterruptedException {
+        System.out.println("sending \t"+message);
+        Thread.sleep(2000);
+        System.out.println(message +"\tsent");
+    }
+}
 
-    public Pair getMinMax(int[] arr, int length) {
-        Pair minMax = new Pair();
+class MessagingSendThread extends Thread
+{
+    String message;
+    Sender sender;
 
-        if (length == 1) {
-            minMax.max = arr[0];
-            minMax.min = arr[0];
-            return minMax;
-        }
-        if (arr[0] > arr[1]) {
-            minMax.max = arr[0];
-            minMax.min = arr[1];
-        } else {
-            minMax.max = arr[1];
-            minMax.min = arr[0];
-        }
+    MessagingSendThread(String msg, Sender object)
+    {
+        this.message = msg;
+        this.sender = object;
+    }
 
-        for (int i = 2; i < length; i++) {
-            if (arr[i] > minMax.max) {
-                minMax.max = arr[i];
-            } else if (arr[i] < minMax.min) {
-                minMax.min = arr[i];
+    @Override
+    public void run()
+    {
+        synchronized (sender)
+        {
+            try {
+                sender.sendMessage(message);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-
-        return minMax;
     }
+
 }
-
-
-
-
