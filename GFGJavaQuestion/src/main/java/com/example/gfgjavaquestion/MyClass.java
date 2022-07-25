@@ -1,50 +1,49 @@
 package com.example.gfgjavaquestion;
 
+import java.util.Arrays;
+
 public class MyClass {
 
     public static void main(String[] args)  {
 
-        Sender sender = new Sender();
-        MessagingSendThread thread1 = new MessagingSendThread("Hi", sender);
-        thread1.start();
-        MessagingSendThread thread2 = new MessagingSendThread("Bye", sender);
-        thread2.start();
+       int[] number = {2,4,2,7,3,2,4,8,9,3,5, 7, 3, 5, 2, 9, 5, 8, 3, 4, 5, 9, 1,5, 8, 3, 2, 8, 0, 9, 6};
+       int count;
 
-    }
+       int a,b;
 
-}
+        Arrays.sort(number);
+        System.out.println(Arrays.toString(number));
+       // [0, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9]
 
-class Sender
-{
-    public void sendMessage(String message) throws InterruptedException {
-        System.out.println("sending \t"+message);
-        Thread.sleep(2000);
-        System.out.println(message +"\tsent");
-    }
-}
-
-class MessagingSendThread extends Thread
-{
-    String message;
-    Sender sender;
-
-    MessagingSendThread(String msg, Sender object)
-    {
-        this.message = msg;
-        this.sender = object;
-    }
-
-    @Override
-    public void run()
-    {
-        synchronized (sender)
+        for (int i=0; i< number.length; i++)
         {
-            try {
-                sender.sendMessage(message);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            a = number[i];
+
+            count = 1;
+
+            for (int j =i+1; j< number.length; j++)
+            {
+               b = number[j];
+
+                if (a == b)
+                {
+                    count++;
+
+                }
+                else
+                {
+                    break;
+                }
+
             }
+
+               System.out.println(number[i] +" : "+count);
+               i = i+(count-1);
+
         }
+
     }
 
 }
+
+
