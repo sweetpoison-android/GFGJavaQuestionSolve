@@ -1,49 +1,60 @@
 package com.example.gfgjavaquestion;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class MyClass {
 
     public static void main(String[] args)  {
+//
+//        Scanner st = new Scanner(System.in);
+//          System.out.println("Enter first number");
+//          int a = st.nextInt();
+//        System.out.println("Enter second number");
+//        int b = st.nextInt();
 
-       int[] number = {2,4,2,7,3,2,4,8,9,3,5, 7, 3, 5, 2, 9, 5, 8, 3, 4, 5, 9, 1,5, 8, 3, 2, 8, 0, 9, 6};
-       int count;
+        neonNumber(1, 10000);
 
-       int a,b;
+    }
 
-        Arrays.sort(number);
-        System.out.println(Arrays.toString(number));
-       // [0, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9]
+    public static void neonNumber(int a, int b) {
 
-        for (int i=0; i< number.length; i++)
+
+        int square;
+        int sum;
+        boolean isNeon;
+
+        for (int i= a; i<= b; i++)
         {
-            a = number[i];
+            sum = 0;
+            square = i*i;
 
-            count = 1;
-
-            for (int j =i+1; j< number.length; j++)
+            while (!(square <= 0))
             {
-               b = number[j];
 
-                if (a == b)
-                {
-                    count++;
-
-                }
-                else
-                {
-                    break;
-                }
+                int result = square%10;
+                sum = sum+result;
+                square = square/10;
 
             }
+            if (i == sum)
+            {
+               isNeon = true;
+            }
+            else
+            {
+                isNeon = false;
+            }
 
-               System.out.println(number[i] +" : "+count);
-               i = i+(count-1);
+            if (isNeon)
+            {
+                System.out.println(i);
+            }
 
+        }
         }
 
     }
 
-}
 
 
